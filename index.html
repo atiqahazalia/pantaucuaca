@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informasi Cuaca Harian | Stasiun Pengamatan Bandung</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigasi Utama -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span>PantauCuaca</span>
+                <span class="badge">ME3105</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#ringkasan">Ringkasan</a></li>
+                <li><a href="#tabel">Data Harian</a></li>
+                <li><a href="#media">Observasi Visual</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header Banner -->
+    <header class="banner">
+        <h1>Informasi Cuaca Harian</h1>
+        <p>Buletin ringkas parameter meteorologi permukaan, distribusi curah hujan harian, serta dokumentasi visual kondisi perawanan wilayah Cekungan Bandung.</p>
+        <button type="button" id="toggleUnit" class="unit-switch">Ubah Satuan Suhu (°C / °F)</button>
+    </header>
+
+    <main class="container">
+
+        <!-- 1. Teks & Kartu Ringkasan Kondisi Cuaca -->
+        <section id="ringkasan" class="kpi-grid" aria-label="Ringkasan parameter cuaca">
+            <article class="kpi-card highlight">
+                <div class="kpi-label">Suhu Udara Maks</div>
+                <div class="kpi-value"><span class="suhu" data-c="30.4">30.4</span><span class="satuan">°C</span></div>
+                <div class="kpi-sub">Puncak siang pukul 13.00 WIB</div>
+            </article>
+            <article class="kpi-card">
+                <div class="kpi-label">Suhu Udara Min</div>
+                <div class="kpi-value"><span class="suhu" data-c="21.2">21.2</span><span class="satuan">°C</span></div>
+                <div class="kpi-sub">Tercatat dini hari pukul 05.00 WIB</div>
+            </article>
+            <article class="kpi-card">
+                <div class="kpi-label">Kelembapan Relatif</div>
+                <div class="kpi-value">84%</div>
+                <div class="kpi-sub">Kondisi udara lembap</div>
+            </article>
+            <article class="kpi-card highlight">
+                <div class="kpi-label">Akumulasi Hujan</div>
+                <div class="kpi-value" id="totalHujan">64 mm</div>
+                <div class="kpi-sub">Total pengamatan 4 hari</div>
+            </article>
+        </section>
+
+        <!-- Teks Narasi Prakiraan -->
+        <section class="card-panel">
+            <h2>Analisis Sinoptik Singkat</h2>
+            <p>
+                Pertumbuhan awan konvektif terpantau aktif sejak siang menjelang sore hari akibat pemanasan lokal yang kuat dan konvergensi angin permukaan di wilayah Jawa Barat bagian tengah. Masyarakat diimbau mewaspadai potensi hujan intensitas sedang yang disertai angin kencang berdurasi singkat pada sore hari.
+            </p>
+        </section>
+
+        <!-- 2. Tata Letak Dua Kolom: Tabel Data & Grafik Batang Horizontal -->
+        <div id="tabel" class="split-grid">
+            <section class="card-panel">
+                <h2>Tabel Data Cuaca Harian</h2>
+                <p class="section-desc">Catatan pengamatan harian stasiun meteorologi permukaan.</p>
+                <div class="table-responsive">
+                    <table id="dataCuaca">
+                        <thead>
+                            <tr>
+                                <th>Tanggal</th>
+                                <th>T. Maks (°C)</th>
+                                <th>T. Min (°C)</th>
+                                <th>RH (%)</th>
+                                <th>Hujan (mm)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>10 Nov 2026</td>
+                                <td>30.4</td>
+                                <td>21.2</td>
+                                <td>84</td>
+                                <td>18</td>
+                            </tr>
+                            <tr>
+                                <td>11 Nov 2026</td>
+                                <td>29.1</td>
+                                <td>20.8</td>
+                                <td>89</td>
+                                <td>28</td>
+                            </tr>
+                            <tr>
+                                <td>12 Nov 2026</td>
+                                <td>31.0</td>
+                                <td>21.5</td>
+                                <td>80</td>
+                                <td>6</td>
+                            </tr>
+                            <tr>
+                                <td>13 Nov 2026</td>
+                                <td>29.8</td>
+                                <td>21.0</td>
+                                <td>86</td>
+                                <td>12</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="card-panel">
+                <h2>Distribusi Curah Hujan</h2>
+                <p class="section-desc">Perbandingan harian otomatis dari tabel di samping.</p>
+                <div id="rainBars" class="rain-list"></div>
+            </section>
+        </div>
+
+        <!-- 3. Media (Gambar Lokal & Video YouTube) -->
+        <section id="media" class="card-panel">
+            <h2>Media Observasi &amp; Edukasi Cuaca</h2>
+            <p class="section-desc">Dokumentasi kondisi perawanan lokal dan tayangan perubahan cuaca.</p>
+            <div class="media-wrapper">
+                <figure>
+                    <img src="img/cuaca.jpeg" alt="Visualisasi kondisi cuaca harian">
+                    <figcaption>
+                        <strong>Dokumentasi Cuaca (img/cuaca.jpeg)</strong>
+                        Visualisasi kondisi cuaca di lapangan sebagai pendukung informasi pengamatan harian.
+                    </figcaption>
+                </figure>
+
+                <figure>
+                    <iframe
+                        width="100%"
+                        height="240"
+                        src="https://www.youtube.com/embed/8r4uovRZ9UY?si=ZpVfz_8M-ypOoL5I"
+                        title="Perubahan Cuaca Terang menjadi Mendung"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                    <figcaption>
+                        <strong>Perubahan Cuaca Terang menjadi Mendung</strong>
+                        Tayangan transisi kondisi langit cerah ke mendung. Tautan video:
+                        <a href="http://www.youtube.com/watch?v=8r4uovRZ9UY" target="_blank" rel="noopener noreferrer">Tonton di YouTube</a>.
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p><strong>(2026) Informasi Cuaca Harian</strong> &mdash; Sistem Informasi Meteorologi</p>
+        <p>Atiqah Azalia Nibroos (12824054)</p>
+    </footer>
+
+    <!-- Script Interaktif: Konversi Suhu & Grafik Batang Horizontal -->
+    <script>
+        const rows = document.querySelectorAll('#dataCuaca tbody tr');
+        const records = Array.from(rows).map(row => {
+            const cells = row.querySelectorAll('td');
+            return {
+                tanggal: cells[0].textContent,
+                hujan: parseFloat(cells[4].textContent)
+            };
+        });
+
+        const total = records.reduce((sum, item) => sum + item.hujan, 0);
+        document.getElementById('totalHujan').textContent = total + ' mm';
+
+        const maxRain = Math.max(...records.map(r => r.hujan));
+        document.getElementById('rainBars').innerHTML = records.map(r => {
+            const pct = Math.round((r.hujan / maxRain) * 100);
+            return `
+                <div>
+                    <div class="rain-row-head">
+                        <span>${r.tanggal}</span>
+                        <span>${r.hujan} mm</span>
+                    </div>
+                    <div class="rain-track">
+                        <div class="rain-fill" style="width: ${pct}%"></div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        let isFahrenheit = false;
+        document.getElementById('toggleUnit').addEventListener('click', () => {
+            isFahrenheit = !isFahrenheit;
+            document.querySelectorAll('.suhu').forEach(el => {
+                const c = parseFloat(el.dataset.c);
+                el.textContent = isFahrenheit ? (c * 9 / 5 + 32).toFixed(1) : c.toFixed(1);
+            });
+            document.querySelectorAll('.satuan').forEach(el => {
+                el.textContent = isFahrenheit ? '°F' : '°C';
+            });
+        });
+    </script>
+
+</body>
+</html>
